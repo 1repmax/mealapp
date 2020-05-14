@@ -10,7 +10,8 @@
 </head>
 
 <body>
-<div class="jumbotron">
+<div class="container-fluid bg-secondary">
+<div class="jumbotron bg-dark text-white">
     <div class="container">
         <h1>Meal planner</h1>
         <p>Online recipes repository</p>
@@ -18,16 +19,64 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4" style="color:blue;">
-            fancy pic with text
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <img class="d-block w-100 img-thumbnail" src="../static/images/plan.jpg" alt="Plan">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-1 text-dark">Plan</h1>
+                        <blockquote class="blockquote text-right">
+                            <p class="mb-0 text-dark  bg-light">I have so much more free time with this app</p>
+                            <footer class="blockquote-footer bg-light">Aigars Strods
+                                <cite title="Source Title"> Vidzemes University of Applied Sciences</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <img class="d-block w-100 img-thumbnail" src="../static/images/save.jpg" alt="Save">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-1">Save</h1>
+                        <blockquote class="blockquote text-right">
+                            <p class="mb-0 bg-light text-dark">Application is reliable and easy to use</p>
+                            <footer class="blockquote-footer bg-light">Guntis Graudins
+                                <cite title="Source Title"> Discord</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <img class="d-block w-100 img-thumbnail" src="../static/images/profit.jpg" alt="Profit">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-1 text-dark">Profit</h1>
+                        <blockquote class="blockquote text-right">
+                            <p class="mb-0 bg-light text-dark">I can finally afford my dream vacation thanks to this app</p>
+                            <footer class="blockquote-footer bg-light">Someone famous in
+                                <cite title="Source Title"> Raivo Lapins</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4" style="color:red;">
-            fancy pic with text
-        </div>
-        <div class="col-md-4" style="color:black;">
-            fancy pic with text
-        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
 
@@ -39,10 +88,8 @@
 
 
 
-
-
 </div>
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
