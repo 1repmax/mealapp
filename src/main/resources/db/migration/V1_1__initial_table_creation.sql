@@ -1,7 +1,7 @@
 
 CREATE TABLE IF NOT EXISTS products (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
-  name varchar(20) DEFAULT NULL
+  name VARCHAR(20) DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS units (
@@ -54,16 +54,22 @@ CREATE TABLE IF NOT EXISTS daily_plans (
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
-CREATE TABLE IF NOT EXISTS basket (
+CREATE TABLE IF NOT EXISTS baskets (
+  id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
+  user_id BIGINT(8) DEFAULT NULL,
+  start_date DATE DEFAULT NULL,
+  end_date DATE DEFAULT NULL,
+  FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS product_basket (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
   product_id BIGINT(8) DEFAULT NULL,
   quantity FLOAT DEFAULT NULL,
   unit_id BIGINT(8) DEFAULT NULL,
-  status tinyint DEFAULT NULL,
-  user_id BIGINT(8) DEFAULT NULL,
-  start_date DATE DEFAULT NULL,
-  end_date DATE DEFAULT NULL,
+  status TINYINT DEFAULT NULL,
+  basket_id BIGINT(8) DEFAULT NULL,
   FOREIGN KEY (product_id) REFERENCES products (id),
   FOREIGN KEY (unit_id) REFERENCES units (id),
-  FOREIGN KEY (user_id) REFERENCES users (id)
+  FOREIGN KEY (basket_id) REFERENCES baskets (id)
 );
