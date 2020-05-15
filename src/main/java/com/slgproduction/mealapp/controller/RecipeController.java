@@ -1,7 +1,9 @@
 package com.slgproduction.mealapp.controller;
 
 import com.slgproduction.mealapp.model.Ingredient;
+import com.slgproduction.mealapp.model.Recipe;
 import com.slgproduction.mealapp.service.IngredientService;
+import com.slgproduction.mealapp.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +14,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${application.context}/${application.version}")
-public class IngredientController {
-    private final IngredientService ingredientService;
+public class RecipeController {
 
-    @GetMapping(value = "/ingredients")
-    public List<Ingredient> getIngredient() {
-        return ingredientService.getIngredients();
+    private final RecipeService recipeService;
+
+    @GetMapping(value = "/recipes")
+    public List<Recipe> getRecipes() {
+        return recipeService.getRecipes();
     }
 }
