@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
   unit_id BIGINT(8) NOT NULL,
   recipe_id BIGINT(8) NOT NULL,
   FOREIGN KEY (product_id) REFERENCES products (id),
-  FOREIGN KEY (units_id) REFERENCES units (id),
+  FOREIGN KEY (unit_id) REFERENCES units (id),
   FOREIGN KEY (recipe_id) REFERENCES recipes (id)
 );
 

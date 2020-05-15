@@ -2,8 +2,6 @@ package com.slgproduction.mealapp.service;
 
 import com.slgproduction.mealapp.model.Product;
 import com.slgproduction.mealapp.repository.ProductRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

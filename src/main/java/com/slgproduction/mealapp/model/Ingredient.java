@@ -27,6 +27,6 @@ public class Ingredient {
     private Float quantity;
 
     @ManyToOne
-    @JoinColumn(name = "units_id")
+    @JoinColumn(name = "unit_id")
     private Unit unit;
 }
