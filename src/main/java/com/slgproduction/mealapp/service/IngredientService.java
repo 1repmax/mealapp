@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class IngredientService {
+
     private final IngredientRepository ingredientRepository;
 
     public List<Ingredient> getIngredients() {
         return ingredientRepository.findAll();
     }
+
 }

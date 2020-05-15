@@ -1,7 +1,6 @@
 package com.slgproduction.mealapp.model;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +26,6 @@ public class Ingredient {
     @Column(name = "quantity")
     private Float quantity;
 
-    //units jāpārlabo uz unit
     @ManyToOne
     @JoinColumn(name = "units_id")
     private Unit unit;

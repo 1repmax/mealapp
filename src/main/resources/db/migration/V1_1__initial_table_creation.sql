@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
   product_id BIGINT(8) NOT NULL,
   quantity FLOAT DEFAULT NULL,
-  units_id BIGINT(8) NOT NULL,
+  unit_id BIGINT(8) NOT NULL,
   recipe_id BIGINT(8) NOT NULL,
   FOREIGN KEY (product_id) REFERENCES products (id),
   FOREIGN KEY (units_id) REFERENCES units (id),
