@@ -24,4 +24,7 @@ public class CookingStep {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "recipe_id")
+    private Integer recipeId;
+
 }

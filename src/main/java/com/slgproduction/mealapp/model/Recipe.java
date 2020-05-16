@@ -32,12 +32,22 @@ public class Recipe {
     @Column(name = "servings_per_recipe")
     private Integer servingsPerRecipe;
 
-    @OneToMany
-    @JoinColumn(name = "recipe_id")
+    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
     private Set<Ingredient> ingredients = new HashSet<>();
 
+    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
+    private Set<DailyPlan> dailyPlans = new HashSet<>();
+
+    //Unidirectional mapping for cooking steps
     @OneToMany
     @JoinColumn(name = "recipe_id")
     private Set<CookingStep> cookingSteps = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

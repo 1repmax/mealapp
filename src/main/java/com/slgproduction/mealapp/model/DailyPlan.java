@@ -6,27 +6,25 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@Table(name = "baskets", schema = "mealdb")
+@Table(name = "daily_plans", schema = "mealdb")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Basket {
+public class DailyPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "start_date")
-    private Date startDate;
+    @Column(name = "target_date")
+    private Date targetDate;
 
-    @Column(name = "end_date")
-    private Date endDate;
+    @ManyToOne
+    private Recipe recipe;
 
     @ManyToOne
     private User user;
@@ -35,14 +33,13 @@ public class Basket {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Basket basket = (Basket) o;
-        return Objects.equals(id, basket.id) &&
-                Objects.equals(startDate, basket.startDate) &&
-                Objects.equals(endDate, basket.endDate);
+        DailyPlan dailyPlan = (DailyPlan) o;
+        return Objects.equals(id, dailyPlan.id) &&
+                Objects.equals(targetDate, dailyPlan.targetDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, startDate, endDate);
+        return Objects.hash(id, targetDate);
     }
 }

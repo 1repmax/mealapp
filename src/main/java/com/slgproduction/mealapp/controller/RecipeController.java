@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -21,5 +22,14 @@ public class RecipeController {
     @GetMapping(value = "/recipes")
     public List<Recipe> getRecipes() {
         return recipeService.getRecipes();
+    }
+
+    // Mapping to home.html for testing purposes
+    @GetMapping(value = "/home")
+    public ModelAndView showRecipes() {
+        ModelAndView modelAndView = new ModelAndView("home");
+        List<Recipe> recipes = recipeService.getRecipes();
+        modelAndView.addObject("recipes", recipes);
+        return modelAndView;
     }
 }

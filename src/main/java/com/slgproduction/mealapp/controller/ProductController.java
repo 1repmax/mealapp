@@ -22,4 +22,5 @@ public class ProductController {
     public List<Product> getProduct() {
         return productService.getProducts();
     }
+
 }
