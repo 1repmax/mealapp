@@ -25,9 +25,9 @@ public class RecipeController {
     }
 
     // Mapping to home.html for testing purposes
-    @GetMapping(value = "/home")
+    @GetMapping(value = "/recep")
     public ModelAndView showRecipes() {
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("recipes");
         List<Recipe> recipes = recipeService.getRecipes();
         modelAndView.addObject("recipes", recipes);
         return modelAndView;
