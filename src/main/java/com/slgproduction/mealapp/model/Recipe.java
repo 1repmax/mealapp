@@ -23,6 +23,9 @@ public class Recipe {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "short_description")
+    private String shortDescription;
+
     @Column(name = "cooking_time")
     private Integer cookingTime;
 

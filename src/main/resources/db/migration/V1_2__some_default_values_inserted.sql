@@ -7,8 +7,8 @@ INSERT INTO products (name) VALUES ("cukurs");
 INSERT INTO units (name, denotation) VALUES ("grami", "g");
 INSERT INTO units (name, denotation) VALUES ("gabali", "gab");
 
-INSERT INTO recipes (name, cooking_time, usage_frequency, servings_per_recipe) VALUES ("Pīrāgs", 3600, 1, 4);
-INSERT INTO recipes (name, cooking_time, usage_frequency, servings_per_recipe) VALUES ("Omlete", 600, 1, 1);
+INSERT INTO recipes (name, short_description, cooking_time, usage_frequency, servings_per_recipe) VALUES ("Pīrāgs", "Labākais pīrāgs pasaulē" ,3600, 1, 4);
+INSERT INTO recipes (name, short_description, cooking_time, usage_frequency, servings_per_recipe) VALUES ("Omlete", "Viegla recepte iesācējiem", 600, 1, 1);
 
 -- Recipe for apple pie
 INSERT INTO ingredients (product_id, quantity, unit_id, recipe_id) VALUES (1, 300, 1, 1);
