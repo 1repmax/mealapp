@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS units (
 CREATE TABLE IF NOT EXISTS recipes (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(45) DEFAULT NULL,
+  short_description VARCHAR(100) DEFAULT NULL,
   cooking_time INT DEFAULT NULL,
   usage_frequency INT DEFAULT NULL,
   servings_per_recipe INT DEFAULT NULL
