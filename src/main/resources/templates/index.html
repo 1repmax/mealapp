@@ -13,23 +13,25 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="#"><h3>Login</h3></a>
+                <a class="nav-link active"
+                   th:href="@{login}"
+                   href="login.html">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#"><h3>Sign-up</h3></a>
+                <a class="nav-link active"
+                   th:href="@{signup}"
+                   href="signup.html">Sign-up</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <body class="bg-secondary">
-        <div class="jumbotron jumbotron-fluid bg-dark text-white">
-            <div class="container">
-                <h1 class="display-2">Meal planner</h1>
-                <small class="text-muted"><h3>Online recipes repository</h3></small>
-            </div>
+    <div class="jumbotron jumbotron-fluid bg-dark text-white text-center p-2">
+        <div class="container-fluid">
+            <h1 class="display-2">Mealy</h1>
         </div>
-
+    </div>
     <div class="container-fluid bg-secondary">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -40,7 +42,10 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="container">
-                        <img class="d-block w-100 img-thumbnail" src="../static/images/plan.jpg" alt="Plan">
+                        <img class="d-block w-100 img-thumbnail"
+                             src="../static/images/plan.jpg"
+                             th:src="@{/images/plan.jpg}"
+                             alt="Plan">
                         <div class="carousel-caption d-none d-md-block">
                             <blockquote class="blockquote text-right">
                                 <p class="mb-0 text-dark  bg-light">I have so much more free time with this app</p>
@@ -53,7 +58,10 @@
                 </div>
                 <div class="carousel-item">
                     <div class="container">
-                        <img class="d-block w-100 img-thumbnail" src="../static/images/save.jpg" alt="Save">
+                        <img class="d-block w-100 img-thumbnail"
+                             src="../static/images/save.jpg"
+                             th:src="@{/images/save.jpg}"
+                             alt="Save">
                         <div class="carousel-caption d-none d-md-block">
                             <blockquote class="blockquote text-right">
                                 <p class="mb-0 bg-light text-dark">Application is reliable and easy to use</p>
@@ -66,7 +74,10 @@
                 </div>
                 <div class="carousel-item">
                     <div class="container">
-                        <img class="d-block w-100 img-thumbnail" src="../static/images/profit.jpg" alt="Profit">
+                        <img class="d-block w-100 img-thumbnail"
+                             src="../static/images/profit.jpg"
+                             th:src="@{/images/profit.jpg}"
+                             alt="Profit">
                         <div class="carousel-caption d-none d-md-block">
                             <blockquote class="blockquote text-right">
                                 <p class="mb-0 bg-light text-dark">I can finally afford my dream vacation thanks to this

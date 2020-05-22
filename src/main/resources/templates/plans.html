@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,17 +13,23 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Add new plan</a>
+                <a class="nav-link"
+                   th:href="@{#}"
+                   href="#">Add new plan</a>
             </li>
         </ul>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="recipePage">Recipes</a>
+                <a class="nav-link active"
+                   th:href="@{recipes}"
+                   href="recipes.html">Recipes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="planPage">Daily plans</a>
+                <a class="nav-link active"
+                   th:href="@{#}"
+                   href="#">Daily plans</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Logout</a>
@@ -37,10 +43,9 @@
         <div class="text-center">
             <div class="card" style="width: 30rem">
                 <div class="card-body">
-                    <h5 class="card-title">PLAN NAME</h5>
-                    <p class="card-text">PLAN DESCRIPTION</p>
-                    <a href="#" class="card-link">Edit plan</a>
-                    <a href="#" class="card-link">Remove plan</a>
+                    <h5 class="card-title">PLAN NAME PLACEHOLDER</h5>
+                    <p class="card-text">PLAN DESCRIPTION PLACEHOLDER</p>
+                    <a href="#" class="card-link">View plan</a>
                 </div>
             </div>
         </div>

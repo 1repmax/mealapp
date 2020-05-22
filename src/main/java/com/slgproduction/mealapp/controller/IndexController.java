@@ -9,10 +9,21 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("${application.context}/${application.version}")
 public class IndexController {
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public ModelAndView getIndex() {
         ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
     }
 
+    @GetMapping("/signup")
+    public ModelAndView signup() {
+        ModelAndView modelAndView = new ModelAndView("signup");
+        return modelAndView;
+    }
+
+    @GetMapping("/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView("login");
+        return modelAndView;
+    }
 }
