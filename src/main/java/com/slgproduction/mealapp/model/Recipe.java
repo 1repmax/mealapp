@@ -37,31 +37,22 @@ public class Recipe {
     @Column(name = "servings_per_recipe")
     private Integer servingsPerRecipe;
 
-    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
-    private Set<Ingredient> ingredients = new HashSet<>();
+    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ingredient> ingredients = new ArrayList<>();
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "recipe_id")
-    private Set<DailyPlan> dailyPlans = new HashSet<>();
+    private List<DailyPlan> dailyPlans = new ArrayList<>();
 
-    //Unidirectional mapping for cooking steps
-//    @OneToMany (cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "recipe_id")
-//    private Set<CookingStep> cookingSteps = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "recipe_id")
     private List<CookingStep> cookingSteps = new ArrayList<>();
 
-    public void addCookingStep(CookingStep cookingStep){
-        cookingSteps.add(cookingStep);
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
-
-//    @Override
-//    public String toString() {
-//        return "Recipe{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
 }

@@ -28,7 +28,4 @@ public class CookingStep {
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-//    @Column(name = "recipe_id")
-//    private Long recipeId;
-
 }

@@ -18,13 +18,16 @@ public class CookingStepService {
 
     public List<CookingStep> getCookingSteps() { return cookingStepRepository.findAll();}
 
+    public CookingStep createNewCookingStep() {
+        return new CookingStep();
+    }
+
     public void save(CookingStep cookingStep){
         cookingStepRepository.save(cookingStep);
     }
 
-    public CookingStep createNewCookingStep() {
-        return new CookingStep();
-    }
+    public void delete(CookingStep cookingStep) {cookingStepRepository.delete(cookingStep);}
+
 }
 
 

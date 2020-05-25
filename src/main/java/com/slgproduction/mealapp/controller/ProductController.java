@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${application.context}/${application.version}")
+//@RequestMapping("${application.context}/${application.version}")
 public class ProductController {
 
     private final ProductService productService;
