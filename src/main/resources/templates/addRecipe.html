@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Products</title>
+    <!-- Adding my javascript! -->
+    <script src="javascript/addRecipeJS.js"></script>
+
+</head>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   th:href="@{#}"
+                   href="#">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active"
+                   th:href="@{plans}"
+                   href="plans.html">Daily plans</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body class="bg-secondary">
+<div class="container mt-5">
+    <div class="row centered-form justify-content-center align-items-center">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="row">
+                            <!-- Recipe name -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" name="recipe_name" id="recipe_name"
+                                           class="form-control input-sm" placeholder="Recipe Name"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="recipe-steps" rows="3" placeholder="Recipe steps"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <div class="form-group">
+                                    <input name="ingredient_name" id="ingredient_name" class="form-control input-sm"
+                                           placeholder="Ingredient" required = "true" />
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <input name="ingredient_amount" id="ingredient_amount" class="form-control input-sm"
+                                           placeholder="Amount" required = "true" />
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <input type="radio" id="grams" name="grams">
+                                    <label for="grams">Grams</label><br>
+                                    <input type="radio" id="gab" name="gab" value="gab">
+                                    <label for="gab">Gabals</label><br>
+                                    <!--
+                                    <div class="dropdown">
+                                        <button class="btn btn-success dropdown-toggle" type="button" id="ingredient_type"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Unit
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="unitDropDown">
+                                            <a class="dropdown-item" onclick="setDropDownText()" id="dropDownGAB">gab.</a>
+                                            <a class="dropdown-item" onclick="setDropDownText()" id="dropDownGRM">gram</a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Add" class="btn btn-info btn-block col-md-4 offset-md-4">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
