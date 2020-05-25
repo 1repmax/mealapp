@@ -16,10 +16,17 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active bg-success">
+                <li class="nav-item active bg-success"
+                    th:if="${#strings.contains(#httpServletRequest.getRequestURI(), '/mealapp/v1/recipe')}">
                     <a class="nav-link"
-                       href="addRecipe.html"
-                       th:href="@{new}" >Add new recipe</a>
+                       href="#"
+                       th:href="@{/mealapp/v1/recipe/new}" >Add New Recipe</a>
+                </li>
+                <li class="nav-item active bg-success"
+                    th:if="${#strings.contains(#httpServletRequest.getRequestURI(), '/mealapp/v1/plans')}">
+                    <a class="nav-link"
+                       href="#"
+                       th:href="@{/mealapp/v1/plans/new}" >Add New Plan</a>
                 </li>
             </ul>
         </div>
@@ -27,12 +34,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link active"
-                       th:href="@{all}"
+                       th:href="@{/mealapp/v1/recipe/all}"
                        href="#">Recipes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active"
-                       th:href="@{plans}"
+                       th:href="@{'/mealapp/v1/plans'}"
                        href="plans.html">Daily plans</a>
                 </li>
                 <li class="nav-item">

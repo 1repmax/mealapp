@@ -2,6 +2,7 @@ package com.slgproduction.mealapp.service;
 
 import com.slgproduction.mealapp.model.CookingStep;
 import com.slgproduction.mealapp.model.Ingredient;
+import com.slgproduction.mealapp.model.Product;
 import com.slgproduction.mealapp.model.Recipe;
 import com.slgproduction.mealapp.repository.RecipeRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,10 @@ public class RecipeService {
 
     public  Recipe findById(Long id) {
         return  recipeRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No question with id " + id + " found"));
+    }
+
+    public List<Recipe> getRecipeByName(String name){
+        return recipeRepository.findByName(name);
     }
 
     public Recipe createNewRecipe() {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header.html :: header-head"/>
+</head>
+
+<div th:replace="fragments/header.html :: header-navbar"/>
+
+<body class="bg-secondary">
+<div class="container mt-5">
+    <div class="row centered-form justify-content-center align-items-center">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 th:text="${session.myAttribute}"></h3>
+                    <form role="form" th:action="@{new}" th:object="${dailyPlan}" method="post">
+
+<!--                        <div th:if="${recipes != null and not #lists.isEmpty(recipes)}">-->
+                        <input list="recipesDataList" class="form-control" th:field="*{recipeName}">  </input>
+                            <datalist id="recipesDataList">
+                                <option th:each="dropDownItem : ${recipes}"
+                                        th:value="${dropDownItem.name}" />
+                            </datalist>
+
+                        <input type="date" name="target_date" class="form-control input-sm"
+                               placeholder="date" th:field="*{dateString}">
+
+                        <input type="submit" value="Save" th:formaction="@{save}" class="btn btn-info btn-block col-md-4 offset-md-4 mt-3">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
