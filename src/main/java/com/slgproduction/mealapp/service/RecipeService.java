@@ -19,4 +19,7 @@ public class RecipeService {
         return recipeRepository.findAll();
     }
 
+    public Recipe createNewRecipe() {
+        return new Recipe();
+    }
 }

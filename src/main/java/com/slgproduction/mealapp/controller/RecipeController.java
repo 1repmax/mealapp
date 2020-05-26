@@ -19,13 +19,16 @@ public class RecipeController {
 
     private final RecipeService recipeService;
 
-    @GetMapping(value = "/recipes")
-    public List<Recipe> getRecipes() {
-        return recipeService.getRecipes();
+    @GetMapping("/recipe/new")
+    public ModelAndView createNewRecipe() {
+        ModelAndView modelAndView = new ModelAndView("addRecipe");
+        Recipe recipe = recipeService.createNewRecipe();
+        modelAndView.addObject("recipe", recipe);
+        return modelAndView;
     }
 
     // Mapping to home.html for testing purposes
-    @GetMapping(value = "/recep")
+    @GetMapping(value = "/recipes")
     public ModelAndView showRecipes() {
         ModelAndView modelAndView = new ModelAndView("recipes");
         List<Recipe> recipes = recipeService.getRecipes();
