@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class CookingStep {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
@@ -24,7 +24,11 @@ public class CookingStep {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "recipe_id")
+//    @ManyToOne (fetch = FetchType.LAZY)
+//    @JoinColumn(name = "recipe_id")
+//    private Recipe recipe;
+    @ManyToOne
+    @JoinColumn(name = "recipe_id")
     private Integer recipeId;
 
 }

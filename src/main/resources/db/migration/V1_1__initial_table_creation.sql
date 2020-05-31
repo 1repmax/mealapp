@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS cooking_steps (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
   step_number INT DEFAULT NULL,
   description longtext,
-  recipe_id BIGINT(8) NOT NULL,
+  recipe_id BIGINT(8) DEFAULT NULL,
   FOREIGN KEY (recipe_id) REFERENCES recipes (id)
 );
 

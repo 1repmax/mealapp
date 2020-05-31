@@ -19,6 +19,7 @@ import java.util.*;
 public class RecipeController {
 
     private final RecipeService recipeService;
+    private final CookingStepService cookingStepService;
 
     @GetMapping("/recipe")
     public ModelAndView createNewRecipe(HttpSession session) {
@@ -43,6 +44,9 @@ public class RecipeController {
         Long recipeId = (Long) session.getAttribute("recipeId");
 
         Recipe recipe = recipeService.findById(recipeId);
+        CookingStep cookingStep = new CookingStep();
+        cookingStep.setRecipe(recipe);
+
 
 //        if (recipe.getCookingSteps().size() < value){
             recipe.addCookingStep();
