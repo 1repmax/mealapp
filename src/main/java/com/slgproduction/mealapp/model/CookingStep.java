@@ -27,8 +27,8 @@ public class CookingStep {
 //    @ManyToOne (fetch = FetchType.LAZY)
 //    @JoinColumn(name = "recipe_id")
 //    private Recipe recipe;
-    @ManyToOne
-    @JoinColumn(name = "recipe_id")
-    private Integer recipeId;
+
+    @Column(name = "recipe_id")
+    private Long recipeId;
 
 }

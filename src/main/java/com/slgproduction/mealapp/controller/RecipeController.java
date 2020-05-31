@@ -45,7 +45,7 @@ public class RecipeController {
 
         Recipe recipe = recipeService.findById(recipeId);
         CookingStep cookingStep = new CookingStep();
-        cookingStep.setRecipe(recipe);
+        cookingStep.setRecipeId(recipe.getId());
 
 
 //        if (recipe.getCookingSteps().size() < value){

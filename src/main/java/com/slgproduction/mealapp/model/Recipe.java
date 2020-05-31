@@ -47,8 +47,8 @@ public class Recipe {
 //    @JoinColumn(name = "recipe_id")
 //    private Set<CookingStep> cookingSteps = new HashSet<>();
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
-//    @JoinColumn(name = "recipe_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "recipe_id")
     private Set<CookingStep> cookingSteps = new HashSet<>();
 
     public void addCookingStep(){
