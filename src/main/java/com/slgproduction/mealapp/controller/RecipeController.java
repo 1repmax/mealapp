@@ -3,29 +3,49 @@ package com.slgproduction.mealapp.controller;
 import com.slgproduction.mealapp.model.*;
 import com.slgproduction.mealapp.service.*;
 import lombok.*;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @RestController
+
 @RequiredArgsConstructor
 @RequestMapping("${application.context}/${application.version}")
+@SessionAttributes("test")
 public class RecipeController {
 
     private final RecipeService recipeService;
 
     @GetMapping("/recipe")
-    public ModelAndView createNewRecipe() {
+    public ModelAndView createNewRecipe(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
-        Recipe recipe = recipeService.createNewRecipe();
-        modelAndView.addObject("recipe", recipe);
+        session.setAttribute("myAttribute", 1);
+//        Recipe recipe = recipeService.createNewRecipe();
+
+        modelAndView.addObject("test", new Test());
         return modelAndView;
     }
 
     @PostMapping("/recipe")
-    public void saveRecipe() {
-
+    public ModelAndView saveRecipe(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("addRecipe");
+        Integer value = (Integer) session.getAttribute("myAttribute");
+        session.setAttribute("myAttribute", value +1);
+//
+//        if (test != null) {
+//            Integer temp = test.getCounter();
+//        }
+//        Integer temp = test.getCounter();
+//        test.setCounter(temp);
+//
+//
+//        attributes.addFlashAttribute(test);
+//        modelAndView.addObject("test", test);
+        return modelAndView;
     }
 
     // Mapping to home.html for testing purposes
@@ -36,4 +56,10 @@ public class RecipeController {
         modelAndView.addObject("recipes", recipes);
         return modelAndView;
     }
+
+//    @ModelAttribute("test")
+//    public Test test(){
+//        return new Test();
+//    }
+
 }
