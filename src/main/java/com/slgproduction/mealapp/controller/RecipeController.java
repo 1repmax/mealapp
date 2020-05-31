@@ -24,9 +24,14 @@ public class RecipeController {
     public ModelAndView createNewRecipe(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
         session.setAttribute("myAttribute", 1);
-//        Recipe recipe = recipeService.createNewRecipe();
+        Recipe recipe = recipeService.createNewRecipe();
+
+
+        Long recepId = recipeService.save(recipe);
+        session.setAttribute("recipeId", recepId);
 
         modelAndView.addObject("test", new Test());
+        modelAndView.addObject("recipe", recipe);
         return modelAndView;
     }
 
@@ -35,6 +40,16 @@ public class RecipeController {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
         Integer value = (Integer) session.getAttribute("myAttribute");
         session.setAttribute("myAttribute", value +1);
+        Long recipeId = (Long) session.getAttribute("recipeId");
+
+        Recipe recipe = recipeService.findById(recipeId);
+
+//        if (recipe.getCookingSteps().size() < value){
+            recipe.addCookingStep();
+            Long recipeId2 = recipeService.save(recipe);
+//        }
+        modelAndView.addObject("recipe", recipe);
+
 //
 //        if (test != null) {
 //            Integer temp = test.getCounter();

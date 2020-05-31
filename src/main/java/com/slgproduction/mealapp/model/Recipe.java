@@ -16,7 +16,7 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
@@ -45,6 +45,10 @@ public class Recipe {
     @OneToMany
     @JoinColumn(name = "recipe_id")
     private Set<CookingStep> cookingSteps = new HashSet<>();
+
+    public void addCookingStep(){
+        cookingSteps.add(new CookingStep());
+    }
 
     @Override
     public String toString() {
