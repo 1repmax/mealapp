@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -49,7 +51,7 @@ public class Recipe {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_id")
-    private Set<CookingStep> cookingSteps = new HashSet<>();
+    private List<CookingStep> cookingSteps = new ArrayList<>();
 
     public void addCookingStep(){
         cookingSteps.add(new CookingStep());

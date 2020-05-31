@@ -46,10 +46,43 @@ public class RecipeController {
         Recipe recipe = recipeService.findById(recipeId);
         CookingStep cookingStep = new CookingStep();
         cookingStep.setRecipeId(recipe.getId());
+        cookingStepService.save(cookingStep);
 
 
 //        if (recipe.getCookingSteps().size() < value){
-            recipe.addCookingStep();
+//            recipe.addCookingStep();
+//            Long recipeId2 = recipeService.save(recipe);
+//        }
+        modelAndView.addObject("recipe", recipe);
+
+//
+//        if (test != null) {
+//            Integer temp = test.getCounter();
+//        }
+//        Integer temp = test.getCounter();
+//        test.setCounter(temp);
+//
+//
+//        attributes.addFlashAttribute(test);
+//        modelAndView.addObject("test", test);
+        return modelAndView;
+    }
+
+    @PostMapping("/recipe/save")
+    public ModelAndView svRecipe(@ModelAttribute Recipe recipe) {
+        ModelAndView modelAndView = new ModelAndView("addRecipe");
+//        Integer value = (Integer) session.getAttribute("myAttribute");
+//        session.setAttribute("myAttribute", value +1);
+//        Long recipeId = (Long) session.getAttribute("recipeId");
+//
+//        Recipe recipe = recipeService.findById(recipeId);
+//        CookingStep cookingStep = new CookingStep();
+//        cookingStep.setRecipeId(recipe.getId());
+//        cookingStepService.save(cookingStep);
+
+
+//        if (recipe.getCookingSteps().size() < value){
+//            recipe.addCookingStep();
             Long recipeId2 = recipeService.save(recipe);
 //        }
         modelAndView.addObject("recipe", recipe);
