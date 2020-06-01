@@ -53,15 +53,15 @@ public class Recipe {
     @JoinColumn(name = "recipe_id")
     private List<CookingStep> cookingSteps = new ArrayList<>();
 
-    public void addCookingStep(){
-        cookingSteps.add(new CookingStep());
+    public void addCookingStep(CookingStep cookingStep){
+        cookingSteps.add(cookingStep);
     }
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Recipe{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }
