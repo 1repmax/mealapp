@@ -54,10 +54,11 @@ public class RecipeController {
     }
 
 
-    @GetMapping("/recipe")
-    public ModelAndView viewRecipe(@RequestParam Long recipeId){
+    @GetMapping("/recipe/{recipeId}")
+    public ModelAndView viewRecipe(@PathVariable Long recipeId){
         ModelAndView modelAndView = new ModelAndView("recipe");
         Recipe recipe = recipeService.findById(recipeId);
+        modelAndView.addObject("recipe", recipe);
 
         return modelAndView;
     }
