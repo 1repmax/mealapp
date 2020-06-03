@@ -21,19 +21,19 @@ public class RecipeController {
     private final RecipeService recipeService;
     private final CookingStepService cookingStepService;
 
-    @GetMapping("/recipe")
+    @GetMapping("/recipe/new")
     public ModelAndView createNewRecipe(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
         Recipe recipe = recipeService.createNewRecipe();
         CookingStep cookingStep = cookingStepService.createNewCookingStep();
-        Long recepId = recipeService.save(recipe);
-        session.setAttribute("recipeId", recepId);
+        Long recipeId = recipeService.save(recipe);
+        session.setAttribute("recipeId", recipeId);
         modelAndView.addObject("recipe", recipe);
         modelAndView.addObject("cookingStep", cookingStep);
         return modelAndView;
     }
 
-    @PostMapping("/recipe")
+    @PostMapping("/recipe/new")
     public ModelAndView addCookingStep(@ModelAttribute Recipe recipe, @ModelAttribute CookingStep cookingStep, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
         Long recipeId = (Long) session.getAttribute("recipeId");
@@ -42,7 +42,7 @@ public class RecipeController {
         temporaryRecipe.setCookingTime(recipe.getCookingTime());
         temporaryRecipe.setShortDescription(recipe.getShortDescription());
         temporaryRecipe.addCookingStep(cookingStep);
-        Long some = recipeService.save(temporaryRecipe);
+        Long temporaryId = recipeService.save(temporaryRecipe);
         modelAndView.addObject("recipe", temporaryRecipe);
         modelAndView.addObject("cookingStep", new CookingStep());
         return modelAndView;
@@ -51,6 +51,15 @@ public class RecipeController {
     @PostMapping("/recipe/save")
     public ModelAndView saveRecipe(@ModelAttribute Recipe recipe, HttpSession session) {
         return new ModelAndView("redirect:/recipes");
+    }
+
+
+    @GetMapping("/recipe")
+    public ModelAndView viewRecipe(@RequestParam Long recipeId){
+        ModelAndView modelAndView = new ModelAndView("recipe");
+        Recipe recipe = recipeService.findById(recipeId);
+
+        return modelAndView;
     }
 
     // Mapping to home.html for testing purposes
