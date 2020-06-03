@@ -21,6 +21,10 @@ public class CookingStepService {
     public void save(CookingStep cookingStep){
         cookingStepRepository.save(cookingStep);
     }
+
+    public CookingStep createNewCookingStep() {
+        return new CookingStep();
+    }
 }
 
 

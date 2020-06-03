@@ -14,7 +14,7 @@ import java.util.*;
 @RestController
 
 @RequiredArgsConstructor
-@RequestMapping("${application.context}/${application.version}")
+//@RequestMapping("${application.context}/${application.version}")
 @SessionAttributes("test")
 public class RecipeController {
 
@@ -24,71 +24,34 @@ public class RecipeController {
     @GetMapping("/recipe")
     public ModelAndView createNewRecipe(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
-        session.setAttribute("myAttribute", 1);
         Recipe recipe = recipeService.createNewRecipe();
-        CookingStep cookingStep = new CookingStep();
-
+        CookingStep cookingStep = cookingStepService.createNewCookingStep();
         Long recepId = recipeService.save(recipe);
         session.setAttribute("recipeId", recepId);
-
-        modelAndView.addObject("test", new Test());
         modelAndView.addObject("recipe", recipe);
         modelAndView.addObject("cookingStep", cookingStep);
         return modelAndView;
     }
 
     @PostMapping("/recipe")
-    public ModelAndView saveRecipe(@ModelAttribute Recipe recipe, @ModelAttribute CookingStep cookingStep, HttpSession session) {
+    public ModelAndView addCookingStep(@ModelAttribute Recipe recipe, @ModelAttribute CookingStep cookingStep, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("addRecipe");
         Long recipeId = (Long) session.getAttribute("recipeId");
-
         Recipe temporaryRecipe = recipeService.findById(recipeId);
         temporaryRecipe.setName(recipe.getName());
         temporaryRecipe.setCookingTime(recipe.getCookingTime());
         temporaryRecipe.setShortDescription(recipe.getShortDescription());
-
-        System.out.println(temporaryRecipe);
-        System.out.println(cookingStep);
         temporaryRecipe.addCookingStep(cookingStep);
         Long some = recipeService.save(temporaryRecipe);
-
         modelAndView.addObject("recipe", temporaryRecipe);
-        modelAndView.addObject("cookingStep", cookingStep);
-
+        modelAndView.addObject("cookingStep", new CookingStep());
         return modelAndView;
     }
 
-//    @PostMapping("/recipe/save")
-//    public ModelAndView svRecipe(@ModelAttribute Recipe recipe) {
-//        ModelAndView modelAndView = new ModelAndView("addRecipe");
-//        Integer value = (Integer) session.getAttribute("myAttribute");
-//        session.setAttribute("myAttribute", value +1);
-//        Long recipeId = (Long) session.getAttribute("recipeId");
-//
-//        Recipe recipe = recipeService.findById(recipeId);
-//        CookingStep cookingStep = new CookingStep();
-//        cookingStep.setRecipeId(recipe.getId());
-//        cookingStepService.save(cookingStep);
-
-
-//        if (recipe.getCookingSteps().size() < value){
-//            recipe.addCookingStep();
-//            Long recipeId2 = recipeService.save(recipe);
-////        }
-//        modelAndView.addObject("recipe", recipe);
-
-//
-//        if (test != null) {
-//            Integer temp = test.getCounter();
-//        }
-//        Integer temp = test.getCounter();
-//        test.setCounter(temp);
-//
-//
-//        attributes.addFlashAttribute(test);
-//        modelAndView.addObject("test", test);
-//        return modelAndView;
-//    }
+    @PostMapping("/recipe/save")
+    public ModelAndView saveRecipe(@ModelAttribute Recipe recipe, HttpSession session) {
+        return new ModelAndView("redirect:/recipes");
+    }
 
     // Mapping to home.html for testing purposes
     @GetMapping(value = "/recipes")
@@ -99,9 +62,5 @@ public class RecipeController {
         return modelAndView;
     }
 
-//    @ModelAttribute("test")
-//    public Test test(){
-//        return new Test();
-//    }
 
 }
