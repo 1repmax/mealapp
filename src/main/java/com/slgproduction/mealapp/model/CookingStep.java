@@ -24,11 +24,11 @@ public class CookingStep {
     @Column(name = "description")
     private String description;
 
-//    @ManyToOne (fetch = FetchType.LAZY)
-//    @JoinColumn(name = "recipe_id")
-//    private Recipe recipe;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
 
-    @Column(name = "recipe_id")
-    private Long recipeId;
+//    @Column(name = "recipe_id")
+//    private Long recipeId;
 
 }
