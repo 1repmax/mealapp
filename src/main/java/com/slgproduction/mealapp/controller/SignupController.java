@@ -1,7 +1,7 @@
 package com.slgproduction.mealapp.controller;
 
 import com.slgproduction.mealapp.model.User;
-import com.slgproduction.mealapp.repository.UserRepository;
+import com.slgproduction.mealapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SignupController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/signup")
     public ModelAndView signup() {
@@ -22,8 +22,9 @@ public class SignupController {
 
     @PostMapping("/signup")
     public ModelAndView registerUser(@ModelAttribute User user) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/index");
-        userRepository.save(user);
+        ModelAndView modelAndView = new ModelAndView("index");
+        userService.saveUser(user);
         return modelAndView;
     }
+
 }
