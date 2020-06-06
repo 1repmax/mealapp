@@ -9,18 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
 
     private static final String PREFIX = "/mealapp/v1";
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,11 +28,12 @@ public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .loginPage("/login")
+                    .loginPage(PREFIX.concat("/login"))
                     .permitAll()
+                .defaultSuccessUrl(PREFIX.concat("/recipes"))
                 .and()
                     .logout()
-                    .logoutSuccessUrl("/index")
+                    .logoutSuccessUrl(PREFIX.concat("/index"))
                     .permitAll();
     }
 
@@ -47,8 +42,4 @@ public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
         return authenticationManager();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService()).passwordEncoder(bCryptPasswordEncoder());
-    }
 }

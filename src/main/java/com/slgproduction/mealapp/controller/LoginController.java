@@ -22,7 +22,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public ModelAndView login(@ModelAttribute LoginWrapper loginWrapper) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("recipes");
+        ModelAndView modelAndView = new ModelAndView("index");
         userService.login(loginWrapper.getEmail(), loginWrapper.getPassword());
         return modelAndView;
     }
