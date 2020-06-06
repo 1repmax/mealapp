@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("${application.context}/${application.version}")
 public class IngredientController {
+
     private final IngredientService ingredientService;
 
     @GetMapping(value = "/ingredients")
