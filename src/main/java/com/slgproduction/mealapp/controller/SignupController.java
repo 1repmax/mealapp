@@ -22,7 +22,7 @@ public class SignupController {
 
     @PostMapping("/signup")
     public ModelAndView registerUser(@ModelAttribute User user) {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("redirect:/index");
         userService.saveUser(user);
         return modelAndView;
     }

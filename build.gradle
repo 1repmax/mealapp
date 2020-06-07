@@ -43,5 +43,5 @@ test {
 flyway {
 	url = 'jdbc:mysql://localhost:3306/mealdb?useTimezone=true&serverTimezone=UTC'
 	user = 'root'
-	password = 'root1234'
+	password = 'root'
 }

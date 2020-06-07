@@ -41,4 +41,7 @@ public class User {
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Basket> baskets = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 }

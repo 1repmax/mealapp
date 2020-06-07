@@ -21,13 +21,21 @@ CREATE TABLE IF NOT EXISTS recipes (
   servings_per_recipe INT DEFAULT NULL
 );
 
+CREATE TABLE IF NOT EXISTS authorities (
+    id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
+    user_role VARCHAR(30) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS users (
   id BIGINT(8) PRIMARY KEY AUTO_INCREMENT,
   first_name VARCHAR(20) DEFAULT NULL,
   last_name VARCHAR(20) DEFAULT NULL,
-  username VARCHAR(20) DEFAULT NULL,
+  name VARCHAR(20) DEFAULT NULL,
   password VARCHAR(128) DEFAULT NULL,
-  email_address VARCHAR(120) DEFAULT NULL
+  email_address VARCHAR(120) DEFAULT NULL,
+  enabled TINYINT NOT NULL DEFAULT 1,
+  authority_id BIGINT(8) NOT NULL,
+  FOREIGN KEY (authority_id) REFERENCES authorities(id)
 );
 
 CREATE TABLE IF NOT EXISTS ingredients (

@@ -1,20 +1,25 @@
 package com.slgproduction.mealapp.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
 
     private static final String PREFIX = "/mealapp/v1";
+    private final DataSource dataSource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,19 +32,31 @@ public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                    .formLogin()
-                    .loginPage(PREFIX.concat("/login"))
-                    .permitAll()
-                .defaultSuccessUrl(PREFIX.concat("/recipes"))
-                .and()
-                    .logout()
-                    .logoutSuccessUrl(PREFIX.concat("/index"))
-                    .permitAll();
+                .formLogin()
+                .defaultSuccessUrl(PREFIX.concat("/recipe/all"));
+//                .permitAll()
+//                .defaultSuccessUrl(PREFIX.concat("/recipes"));
+//                    .loginPage(PREFIX.concat("/login"))
+//                    .permitAll()
+//                .defaultSuccessUrl(PREFIX.concat("/recipes"))
+//                .and()
+//                    .logout()
+//                    .logoutSuccessUrl(PREFIX.concat("/index"))
+//                    .permitAll();
+    }
+//
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select name, password, enabled from users where name = ?")
+                .authoritiesByUsernameQuery("select u.name, a.user_role from authorities a\n" +
+                        "inner join users u on a.id = u.authority_id\n" +
+                        "where u.name = ?");
     }
 
     @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
+    public PasswordEncoder getPasswordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
 
 }
