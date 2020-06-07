@@ -27,13 +27,13 @@ public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                     .permitAll()
                 .antMatchers(PREFIX.concat("/index"),
-                            PREFIX.concat("/signup"),
-                            PREFIX.concat("/login"))
+                            PREFIX.concat("/signup"))
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl(PREFIX.concat("/recipe/all"));
+                .defaultSuccessUrl(PREFIX.concat("/recipe/all"))
+                .permitAll();
 //                .permitAll()
 //                .defaultSuccessUrl(PREFIX.concat("/recipes"));
 //                    .loginPage(PREFIX.concat("/login"))
