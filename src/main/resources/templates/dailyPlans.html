@@ -9,5 +9,23 @@
 
 <body>
 
+    <table>
+        <thead>
+        <td>
+            DATE
+        </td>
+        <td>
+            RECIPe
+        </td>
+        </thead>
+        <tbody>
+            <tr th:each="dailyPlan : ${dailyPlans}">
+                <td th:text="${dailyPlan.targetDate}"></td>
+                <td th:text="${dailyPlan.recipe.name}"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
 </body>
 </html>

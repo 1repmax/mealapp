@@ -22,12 +22,16 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User login(String email, String password) throws Exception {
-        User user = userRepository.findByEmailAddress(email);
-
-        if(user == null) {
-            throw new Exception("User not found");
-        }
-        return user;
+    public User getSessionUser(String username){
+        return  userRepository.findByUsername(username);
     }
+
+//    public User login(String email, String password) throws Exception {
+//        User user = userRepository.findByEmailAddress(email);
+//
+//        if(user == null) {
+//            throw new Exception("User not found");
+//        }
+//        return user;
+//    }
 }

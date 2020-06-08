@@ -3,11 +3,13 @@ package com.slgproduction.mealapp.controller;
 import com.slgproduction.mealapp.model.*;
 import com.slgproduction.mealapp.service.DailyPlanService;
 import com.slgproduction.mealapp.service.RecipeService;
+import com.slgproduction.mealapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class DailyPlanController {
 
     private final DailyPlanService dailyPlanService;
     private final RecipeService recipeService;
+    private final UserService userService;
 
     @GetMapping(value = "")
     public ModelAndView getPlans() {
@@ -35,8 +38,6 @@ public class DailyPlanController {
         List<DailyPlan> dailyPlans = dailyPlanService.getDailyPlans();
         List<Recipe> recipes = recipeService.getRecipes();
 
-//        DailyPlan dailyPlan = dailyPlanService.createNewDailyPlan();
-
         DailyPlanHelper dailyPlan = new DailyPlanHelper();
 
         modelAndView.addObject("recipes", recipes);
@@ -45,7 +46,7 @@ public class DailyPlanController {
     }
 
     @PostMapping(value = "save")
-    public ModelAndView savePlan(@ModelAttribute DailyPlanHelper dailyPlanHelper) throws ParseException {
+    public ModelAndView savePlan(@ModelAttribute DailyPlanHelper dailyPlanHelper, Principal principal) throws ParseException {
         ModelAndView modelAndView = new ModelAndView("redirect:");
         DailyPlan dailyPlan = dailyPlanService.createNewDailyPlan();
 
@@ -54,6 +55,9 @@ public class DailyPlanController {
 
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dailyPlanHelper.getDateString());
         dailyPlan.setTargetDate(date);
+
+        User user = userService.getSessionUser(principal.getName());
+        dailyPlan.setUser(user);
 
         dailyPlanService.save(dailyPlan);
 
