@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -28,12 +29,16 @@ public class WebSecurityconfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .antMatchers(PREFIX.concat("/index"),
                             PREFIX.concat("/signup"))
-                .permitAll()
+                    .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .defaultSuccessUrl(PREFIX.concat("/recipe/all"))
-                .permitAll();
+                    .formLogin()
+                    .defaultSuccessUrl(PREFIX.concat("/recipe/all"))
+                    .permitAll()
+                .and()
+                    .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl(PREFIX.concat("/index"));
 //                .permitAll()
 //                .defaultSuccessUrl(PREFIX.concat("/recipes"));
 //                    .loginPage(PREFIX.concat("/login"))

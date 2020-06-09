@@ -7,17 +7,17 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/mealdb?autoreconnect=true?useTimezone=true&serverTimezone=UTC"
     username: "root"
-    password: "root1234"
+    password: "root"
   jpa:
     database-platform: "org.hibernate.dialect.MySQL5InnoDBDialect"
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
 flyway:
   url: "jdbc:mysql://localhost:3306/mealdb?useTimezone=true&serverTimezone=UTC"
   schemas: "mealdb"
   user: "root"
-  password: "root1234"
+  password: "root"
   locations: "filesystem:db/migration"
   enabled: true
   sql-migration-prefix: "V"
