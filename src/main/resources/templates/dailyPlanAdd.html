@@ -15,8 +15,7 @@
                     <h3 th:text="${session.myAttribute}"></h3>
                     <form role="form" th:action="@{new}" th:object="${dailyPlan}" method="post">
 
-<!--                        <div th:if="${recipes != null and not #lists.isEmpty(recipes)}">-->
-                        <input list="recipesDataList" class="form-control" th:field="*{recipeName}">  </input>
+                        <input list="recipesDataList" class="form-control" th:field="*{recipeName}">
                             <datalist id="recipesDataList">
                                 <option th:each="dropDownItem : ${recipes}"
                                         th:value="${dropDownItem.name}" />

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header.html :: header-head"/>
+</head>
+
+<div th:replace="fragments/header.html :: header-navbar"/>
+
+<body class="bg-secondary">
+<div>
+    <div class="container-fluid  bg-secondary mt-5">
+        <div class="row mb-3 justify-content-center">
+            <div class="text-center">
+                <div class="card" style="width: 60rem">
+                    <div class="card-body">
+
+                        <h5>Products to buy:</h5>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="product,iter: ${productBaskets}">
+                                <th scope="row" th:text="${iter.index + 1}"></th>
+                                <td th:text="${product.productName}"></td>
+                                <td th:text="${product.quantity}"></td>
+                                <td th:text="${product.unitName}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
