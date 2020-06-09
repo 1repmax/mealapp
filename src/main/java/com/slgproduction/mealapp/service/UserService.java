@@ -22,8 +22,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getSessionUser(String username){
-        return  userRepository.findByUsername(username);
+    public User getSessionUser(String name){
+        return  userRepository.findByName(name);
     }
 
 //    public User login(String email, String password) throws Exception {
