@@ -40,8 +40,7 @@ public class Recipe {
     @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "recipe_id")
+    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DailyPlan> dailyPlans = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

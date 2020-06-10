@@ -23,8 +23,7 @@ public class DailyPlan {
     @Column(name = "target_date")
     private Date targetDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "recipe_id")
+    @ManyToOne
     private Recipe recipe;
 
     @ManyToOne
