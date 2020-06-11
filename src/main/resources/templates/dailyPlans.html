@@ -76,7 +76,7 @@
                                 <th scope="row" th:text="${iter.index + 1}"></th>
                                 <td th:text="${simpleDateFormat.format(basket.startDate)}"></td>
                                 <td th:text="${simpleDateFormat.format(basket.endDate)}" ></td>
-                                <td><a class="" href="#" th:href="@{'plans/basket/' + ${basket.id}}">View</a></td>
+                                <td><a class="" href="#" th:href="@{'plans/basket/' + ${basket.id}}">Get product list</a></td>
                                 <td><a class="" href="#" th:href="@{'plans/basket/' + ${basket.id} + '/delete'}">Delete</a></td>
                             </tr>
                             </tbody>
