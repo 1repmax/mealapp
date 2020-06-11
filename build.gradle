@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id "org.flywaydb.flyway" version "6.4.2"
 	id 'java'
+	id 'war'
 }
 
 group = 'com.slgproduction'
@@ -43,5 +44,5 @@ test {
 flyway {
 	url = 'jdbc:mysql://localhost:3306/mealdb?useTimezone=true&serverTimezone=UTC'
 	user = 'root1234'
-	password = 'root1234'
+	password = 'M3al13'
 }
