@@ -18,7 +18,7 @@
                         <h5 class="card-title " th:text="${recipe.shortDescription}"></h5>
                         <hr>
                         <tr class="card-text font-weight-bold" >
-                            <td class="font-weight-bold">Sastāvdaļas:</td>
+                            <td class="font-weight-bold">Ingredients:</td>
                             <br>
                         </tr>
                         <tr class="card-text" th:each="ingredient : ${recipe.ingredients}">
@@ -29,7 +29,7 @@
                         </tr>
                         <hr>
                         <tr class="card-text font-weight-bold" >
-                            <td class="font-weight-bold">Pagatavošanas soļi:</td>
+                            <td class="font-weight-bold">Cooking Steps:</td>
                             <br>
                         </tr>
                         <tr th:each="cookingStep : ${recipe.cookingSteps}">
